@@ -99,9 +99,8 @@ class _CountryPickerDialogState extends State<CountryPickerDialog> {
               child: TextField(
                 style:TextStyle(
             fontWeight: FontWeight.w400,
-            fontSize: 18.sp,
-            height: 1.3,
-            color: ColorsManager.BlackColor),
+            fontSize: 18,
+            color: Color(0xff000000),
                 cursorColor: widget.style?.searchFieldCursorColor,
                 decoration: widget.style?.searchFieldInputDecoration ??
                     InputDecoration(
