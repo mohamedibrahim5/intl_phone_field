@@ -183,7 +183,7 @@ class IntlPhoneField extends StatefulWidget {
   /// Icon of the drop down button.
   ///
   /// Default is [Icon(Icons.arrow_drop_down)]
-  final Icon dropdownIcon;
+  final Widget dropdownIcon;
 
   /// Whether this text field should focus itself if nothing else is already focused.
   final bool autofocus;
@@ -461,9 +461,9 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(
-                  width: 4,
-                ),
+                // const SizedBox(
+                //   width: 4,
+                // ),
                 if (widget.enabled &&
                     widget.showDropdownIcon &&
                     widget.dropdownIconPosition == IconPosition.leading) ...[
@@ -495,7 +495,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                   const SizedBox(width: 4),
                   widget.dropdownIcon,
                 ],
-                const SizedBox(width: 8),
+                // const SizedBox(width: 8),
               ],
             ),
           ),
