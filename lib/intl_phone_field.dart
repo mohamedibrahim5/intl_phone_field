@@ -253,6 +253,10 @@ class IntlPhoneField extends StatefulWidget {
   /// If null, default magnification configuration will be used.
   final TextMagnifierConfiguration? magnifierConfiguration;
 
+  /// show validation message 
+
+  final bool showValidate ;
+
   const IntlPhoneField({
     Key? key,
     this.formFieldKey,
@@ -300,7 +304,8 @@ class IntlPhoneField extends StatefulWidget {
     this.pickerDialogStyle,
     this.flagsButtonMargin = EdgeInsets.zero,
     this.magnifierConfiguration,
-    this.counterTextTest = false
+    this.counterTextTest = false,
+    this.showValidate = false 
   }) : super(key: key);
 
   @override
@@ -436,7 +441,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
         if (!widget.disableLengthCheck) {
           return value.length >= _selectedCountry.minLength && value.length <= _selectedCountry.maxLength
               ? null
-              : widget.invalidNumberMessage;
+              :widget.showValidate ? null : widget.invalidNumberMessage;
         }
 
         return validatorMessage;
