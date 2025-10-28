@@ -266,10 +266,16 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       );
       final value = widget.validator?.call(initialPhoneNumber);
       if (value is String) {
-        validatorMessage = value;
-      } else if (value is Future) {
-        value.then((msg) => validatorMessage = msg);
-      }
+  // Validator returned a normal String message
+  validatorMessage = value;
+} else if (value is Future<String?>) {
+  // Validator returned a Future — handle it safely
+  value.then((msg) {
+    if (mounted) {
+      setState(() => validatorMessage = msg);
+    }
+  });
+}
     }
   }
 
