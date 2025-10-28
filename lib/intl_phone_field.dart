@@ -257,6 +257,9 @@ class IntlPhoneField extends StatefulWidget {
 
   final bool showValidate ;
 
+  /// make a validation 
+  final bool addValidateManual ;
+
   const IntlPhoneField({
     Key? key,
     this.formFieldKey,
@@ -305,7 +308,8 @@ class IntlPhoneField extends StatefulWidget {
     this.flagsButtonMargin = EdgeInsets.zero,
     this.magnifierConfiguration,
     this.counterTextTest = false,
-    this.showValidate = false 
+    this.showValidate = false ,
+    this.addValidateManual = false
   }) : super(key: key);
 
   @override
@@ -436,7 +440,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
 
         widget.onChanged?.call(phoneNumber);
       },
-      validator: (value) {
+      validator:widget.addValidateManual ? widget.validator : (value) {
         if (value == null || !isNumeric(value)) return validatorMessage;
         if (!widget.disableLengthCheck) {
           return value.length >= _selectedCountry.minLength && value.length <= _selectedCountry.maxLength
