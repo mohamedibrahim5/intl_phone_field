@@ -246,6 +246,10 @@ class IntlPhoneField extends StatefulWidget {
   /// Enable the autofill hint for phone number.
   final bool disableAutoFillHints;
 
+  /// make under dropdowm change show number or not 
+
+  final bool counterTextTest ;
+
   /// If null, default magnification configuration will be used.
   final TextMagnifierConfiguration? magnifierConfiguration;
 
@@ -296,6 +300,7 @@ class IntlPhoneField extends StatefulWidget {
     this.pickerDialogStyle,
     this.flagsButtonMargin = EdgeInsets.zero,
     this.magnifierConfiguration,
+    this.counterTextTest = false
   }) : super(key: key);
 
   @override
@@ -401,7 +406,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       magnifierConfiguration: widget.magnifierConfiguration,
       decoration: widget.decoration.copyWith(
         prefixIcon: _buildFlagsButton(),
-        counterText: !widget.enabled ? '' : null,
+        counterText:widget.counterTextTest ? '' : !widget.enabled ? '' : null,
       ),
       style: widget.style,
       onSaved: (value) {
